@@ -11,7 +11,9 @@ import java.sql.SQLException;
 public class MySQLMethods {
 
     public static void createTableIfNotExists() {
-        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER, nick BOOLEAN)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin DATE, Ende VARCHAR(100), Grund VARCHAR(100)");
+
+        MySQL.update("CREATE TABLE IF NOT EXISTS rpg (playername VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
 
     public static void createData(OfflinePlayer player) {
@@ -19,7 +21,23 @@ public class MySQLMethods {
 
         int ep = 0;
         int coins = 0;
-        int campaignprogress = 0;
+        int campaignprogress = 0;     // das changen
+
+        if(!isInDataBase(player)) {
+            ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
+
+            try {
+                if (!rs.next()) {
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)"); // daaaaaaaaaaaaa
+                    return;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        //int bla bla
 
         if(!isInDataBase(player)) {
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
