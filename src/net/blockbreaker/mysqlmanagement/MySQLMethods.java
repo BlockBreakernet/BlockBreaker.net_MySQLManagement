@@ -35,7 +35,6 @@ public class MySQLMethods {
             try {
                 if (!rs.next()) {
                     MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + lastLoginAsString + "', nick)");
-                    return;
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -44,7 +43,7 @@ public class MySQLMethods {
 
 
         //  "rpg" Tabelle
-        if(!isInDataBase(player, "rpg")) {
+        if(isInDataBase(player, "rpg")) {
             int ep = 0;
             int coins = 0;
             int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt
