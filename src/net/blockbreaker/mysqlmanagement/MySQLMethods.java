@@ -53,7 +53,7 @@ public class MySQLMethods {
 
             try {
                 if (!sr.next()) {
-                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "')");
+                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', ep, coins, campaignprogress)");
                     return;
                 }
             } catch (SQLException e) {
