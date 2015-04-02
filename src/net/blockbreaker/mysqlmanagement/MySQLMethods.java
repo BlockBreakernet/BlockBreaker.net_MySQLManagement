@@ -34,7 +34,7 @@ public class MySQLMethods {
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + lastLoginAsString + "', '" + nick + "')");
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + lastLoginAsString + "', nick)");
                     return;
                 }
             } catch (SQLException e) {
