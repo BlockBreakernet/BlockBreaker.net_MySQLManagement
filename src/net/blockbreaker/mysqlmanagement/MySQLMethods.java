@@ -24,7 +24,7 @@ public class MySQLMethods {
         String uuid = player.getUniqueId().toString();
 
         //  "data" Tabelle
-        if(isInDataBase(player, "data")) {
+        if(!isInDataBase(player, "data")) {
 
             DateFormat dmy = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
             String lastLoginAsString = dmy.format(System.currentTimeMillis());
@@ -53,7 +53,7 @@ public class MySQLMethods {
 
             try {
                 if (!sr.next()) {
-                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', ep, coins, campaignprogress)");
+                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "')");
                     return;
                 }
             } catch (SQLException e) {
