@@ -29,7 +29,7 @@ public class MySQLMethods {
         SimpleDateFormat lastlogin = new SimpleDateFormat("yyyy.mm.dd");
 
 
-        if(!isInDataBase(player)) {
+        if(!isInDataBase(player, "data")) {
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
 
             try {
@@ -40,25 +40,22 @@ public class MySQLMethods {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-            // Tabelle zwei
-            ResultSet sr = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
-
-            try {
-                if (!sr.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)");
-                    return;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
 
         //int bla bla
 
-        if(!isInDataBase(player)) {
+        if(!isInDataBase(player, "rpg")) {
+            ResultSet sr = MySQL.getResult("SELECT uuid FROM rpg WHERE uuid = '" + uuid + "'");
 
+            try {
+                if (!sr.next()) {
+                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)");
+                    return;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
