@@ -48,7 +48,7 @@ public class MySQLMethods {
         if(!isInDataBase(player, "rpg")) {
             int ep = 0;
             int coins = 0;
-            int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt
+            int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt!
 
             ResultSet sr = MySQL.getResult("SELECT uuid FROM rpg WHERE uuid = '" + uuid + "'");
 
