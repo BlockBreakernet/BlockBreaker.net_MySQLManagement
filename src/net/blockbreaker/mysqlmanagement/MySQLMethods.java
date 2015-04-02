@@ -40,22 +40,25 @@ public class MySQLMethods {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
 
-
-        //int bla bla
-
-        if(!isInDataBase(player)) {
-            ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
+            // Tabelle zwei
+            ResultSet sr = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
 
             try {
-                if (!rs.next()) {
+                if (!sr.next()) {
                     MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)");
                     return;
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+
+
+        //int bla bla
+
+        if(!isInDataBase(player)) {
+
         }
     }
 
