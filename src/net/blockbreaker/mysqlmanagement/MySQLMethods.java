@@ -15,7 +15,7 @@ public class MySQLMethods {
     public static void createTableIfNotExists() {
         MySQL.update("CREATE TABLE IF NOT EXISTS data(name VARCHAR(100), uuid VARCHAR(100), lastlogin VARCHAR(100), nick BOOLEAN)");
 
-        MySQL.update("CREATE TABLE IF NOT EXISTS rpg(name VARCHAR(100), uuid VARCHAR(100), ep VARCHAR(100), coins INTEGER, campaignprogress INTEGER)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS rpg(name VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
 
     public static void createData(OfflinePlayer player) {
@@ -44,7 +44,7 @@ public class MySQLMethods {
 
 
         //  "rpg" Tabelle
-        if(isInDataBase(player, "rpg")) {
+        if(!isInDataBase(player, "rpg")) {
             int ep = 0;
             int coins = 0;
             int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt
