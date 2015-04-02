@@ -28,7 +28,7 @@ public class MySQLMethods {
 
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)"); // daaaaaaaaaaaaa
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)"); // daaaaaaaaaaaaaaa
                     return;
                 }
             } catch (SQLException e) {
