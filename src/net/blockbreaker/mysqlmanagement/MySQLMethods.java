@@ -4,7 +4,9 @@ import org.bukkit.OfflinePlayer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Lukas on 02.04.2015.
@@ -24,17 +26,19 @@ public class MySQLMethods {
 
         //  "data" Tabelle
 
-        boolean nick = false;
 
-        SimpleDateFormat lastlogin = new SimpleDateFormat("yyyy.mm.dd");
+        //Date lastlogindate = new Date();
+        DateFormat dmy = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
+        String lastLoginAsString = dmy.format(System.currentTimeMillis());
 
 
         if(!isInDataBase(player, "data")) {
+            boolean nick = false;
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
 
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastlogin + "'"); // daaaaaaaaaaaaaa
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastLoginAsString + "'");
                     return;
                 }
             } catch (SQLException e) {
@@ -46,11 +50,15 @@ public class MySQLMethods {
         //int bla bla
 
         if(!isInDataBase(player, "rpg")) {
+            int ep = 0;
+            int coins = 0;
+            int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt
+
             ResultSet sr = MySQL.getResult("SELECT uuid FROM rpg WHERE uuid = '" + uuid + "'");
 
             try {
                 if (!sr.next()) {
-                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)"); //fdgdfgdfgdfg
+                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)");
                     return;
                 }
             } catch (SQLException e) {
