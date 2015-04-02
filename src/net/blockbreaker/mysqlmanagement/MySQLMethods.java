@@ -34,7 +34,7 @@ public class MySQLMethods {
 
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastlogin + "'"); // daaaaaaaaaaaaaaa
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastlogin + "'"); // daaaaaaaaaaaaaa
                     return;
                 }
             } catch (SQLException e) {
