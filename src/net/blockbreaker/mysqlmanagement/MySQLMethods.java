@@ -4,6 +4,7 @@ import org.bukkit.OfflinePlayer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Lukas on 02.04.2015.
@@ -17,18 +18,23 @@ public class MySQLMethods {
     }
 
     public static void createData(OfflinePlayer player) {
+
+        // allgemeine Variablen definieren
         String uuid = player.getUniqueId().toString();
 
-        int ep = 0;
-        int coins = 0;
-        int campaignprogress = 0;     // das changen
+        //  "data" Tabelle
+
+        boolean nick = false;
+
+        SimpleDateFormat lastlogin = new SimpleDateFormat("yyyy.mm.dd");
+
 
         if(!isInDataBase(player)) {
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
 
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)"); // daaaaaaaaaaaaaaa
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastlogin + "'"); // daaaaaaaaaaaaaaa
                     return;
                 }
             } catch (SQLException e) {
