@@ -1,0 +1,5 @@
+name: MySQL_Management
+version: 1.0
+author: lusu007
+
+main: net.blockbreaker.mysqlmanagement.Main
