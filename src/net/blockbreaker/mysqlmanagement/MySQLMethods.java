@@ -70,7 +70,7 @@ public class MySQLMethods {
         ResultSet rs = MySQL.getResult("SELECT uuid FROM " + database + " WHERE uuid = '" + uuid + "'");
 
         try {
-            if(rs.next()) {
+            if(!rs.next()) {
                 isInDatabase = true;
             } else {
                 isInDatabase = false;
