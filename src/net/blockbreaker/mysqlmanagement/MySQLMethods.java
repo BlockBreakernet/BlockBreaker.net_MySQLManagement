@@ -24,7 +24,7 @@ public class MySQLMethods {
         String uuid = player.getUniqueId().toString();
 
         //  "data" Tabelle
-        if(!isInDataBase(player, "data")) {
+        if(isInDataBase(player, "data")) {
 
             DateFormat dmy = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
             String lastLoginAsString = dmy.format(System.currentTimeMillis());
