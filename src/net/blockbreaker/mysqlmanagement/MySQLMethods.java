@@ -14,7 +14,7 @@ import java.util.Locale;
 public class MySQLMethods {
 
     public static void createTableIfNotExists() {
-        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin DATE, end VARCHAR(100), reason VARCHAR(100)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin VARCHAR(100)");
 
         MySQL.update("CREATE TABLE IF NOT EXISTS rpg (playername VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
@@ -38,7 +38,7 @@ public class MySQLMethods {
 
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastLoginAsString + "'");
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + nick + "', '" + lastLoginAsString + "')");
                     return;
                 }
             } catch (SQLException e) {
@@ -58,7 +58,7 @@ public class MySQLMethods {
 
             try {
                 if (!sr.next()) {
-                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "', false)");
+                    MySQL.update("INSERT INTO rpg VALUES('" + player.getName() + "', '" + uuid + "', '" + ep + "', '" + coins + "', '" + campaignprogress + "')");
                     return;
                 }
             } catch (SQLException e) {
