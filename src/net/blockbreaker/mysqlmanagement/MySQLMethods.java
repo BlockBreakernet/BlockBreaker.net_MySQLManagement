@@ -24,7 +24,7 @@ public class MySQLMethods {
         String uuid = player.getUniqueId().toString();
 
         //  "data" Tabelle
-        if(!isInDataBase(player, "data")) {
+        if(isInDataBase(player, "data")) {
 
             DateFormat dmy = DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY);
             String lastLoginAsString = dmy.format(System.currentTimeMillis());
@@ -44,7 +44,7 @@ public class MySQLMethods {
 
 
         //  "rpg" Tabelle
-        if(!isInDataBase(player, "rpg")) {
+        if(isInDataBase(player, "rpg")) {
             int ep = 0;
             int coins = 0;
             int campaignprogress = 1; // TODO: 1 oda 0 je nach dem was für 1. bzw Startmission besser vom logischen Zusammenhang passt
