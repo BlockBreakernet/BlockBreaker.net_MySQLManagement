@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 public class MySQLMethods {
 
     public static void createTableIfNotExists() {
-        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin DATE, Ende VARCHAR(100), Grund VARCHAR(100)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin DATE, end VARCHAR(100), reason VARCHAR(100)");
 
         MySQL.update("CREATE TABLE IF NOT EXISTS rpg (playername VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
