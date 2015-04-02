@@ -62,12 +62,12 @@ public class MySQLMethods {
         }
     }
 
-    public static boolean isInDataBase(OfflinePlayer target) {
+    public static boolean isInDataBase(OfflinePlayer target, String database) {
         String uuid = target.getUniqueId().toString();
 
         boolean isInDatabase = false;
 
-        ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
+        ResultSet rs = MySQL.getResult("SELECT uuid FROM " + database + " WHERE uuid = '" + uuid + "'");
 
         try {
             if(rs.next()) {
