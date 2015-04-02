@@ -14,7 +14,7 @@ import java.util.Locale;
 public class MySQLMethods {
 
     public static void createTableIfNotExists() {
-        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastlogin VARCHAR(100)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS data (playername VARCHAR(100), uuid VARCHAR(100), nick BOOLEAN, lastLoginAsString VARCHAR(100)");
 
         MySQL.update("CREATE TABLE IF NOT EXISTS rpg (playername VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
