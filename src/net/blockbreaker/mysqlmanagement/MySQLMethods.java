@@ -16,6 +16,8 @@ public class MySQLMethods {
         MySQL.update("CREATE TABLE IF NOT EXISTS data(name VARCHAR(100), uuid VARCHAR(100), lastlogin VARCHAR(100), nick BOOLEAN)");
 
         MySQL.update("CREATE TABLE IF NOT EXISTS rpg(name VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
+
+        MySQL.update("CREATE TABLE IF NOT EXISTS serverdata(motd VARCHAR(100))");
     }
 
     public static void createData(OfflinePlayer player) {
