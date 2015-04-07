@@ -13,7 +13,7 @@ import java.util.Locale;
 public class MySQLMethods {
 
     public static void createTableIfNotExists() {
-        MySQL.update("CREATE TABLE IF NOT EXISTS data(name VARCHAR(100), uuid VARCHAR(100), lastlogin VARCHAR(100), nick BOOLEAN)");
+        MySQL.update("CREATE TABLE IF NOT EXISTS data(name VARCHAR(100), uuid VARCHAR(100), lastlogin VARCHAR(100), logincounter VARCHAR(100), nick BOOLEAN)");
 
         MySQL.update("CREATE TABLE IF NOT EXISTS rpg(name VARCHAR(100), uuid VARCHAR(100), ep INTEGER, coins INTEGER, campaignprogress INTEGER)");
     }
@@ -30,11 +30,12 @@ public class MySQLMethods {
             String lastLoginAsString = dmy.format(System.currentTimeMillis());
 
             boolean nick = false;
+            int logincounter = 0;
 
             ResultSet rs = MySQL.getResult("SELECT uuid FROM data WHERE uuid = '" + uuid + "'");
             try {
                 if (!rs.next()) {
-                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + lastLoginAsString + "', nick)");
+                    MySQL.update("INSERT INTO data VALUES('" + player.getName() + "', '" + uuid + "', '" + lastLoginAsString + "', '" + logincounter + "' ,nick)");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
